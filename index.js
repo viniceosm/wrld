@@ -14,6 +14,13 @@ let empresas = [];
 })();
 
 (() => {
+	let david = criaObjetoPushArray(new Pessoa('David'), pessoas);
+	let nuBank = david.criarEmpresa('Nubank');
+
+	nuBank.criarVaga('programador', 20000, 1);
+})();
+
+(() => {
 	let vini = criaObjetoPushArray(new Pessoa('Vini', 10), pessoas);
 
 	let empresa = procuraEmpresaPorNome('Padaria do luiz');

@@ -3,7 +3,9 @@ class Empresa {
 		Object.assign(this, {
 			_nome,
 			_mercadorias: [],
-			_moeda
+			_moeda,
+			vagas: [],
+			funcionarios: []
 		});
 	}
 
@@ -45,8 +47,18 @@ class Empresa {
 
 			fnCallback(true, mercadoriaEncontrada);
 			return;
+		} else {
+			console.warn('Sistema: Seu saldo é inválido.');
 		}
 
 		fnCallback(false);
+	}
+
+	criarVaga(descricao, salario, quantidade) {
+		if (this.vagas.findIndex(vaga => vaga.descricao === descricao) == -1) {
+			this.vagas.push({ descricao, salario, quantidade });
+		} else {
+			console.warn('Sistema: Já existe uma vaga com essa descrição');
+		}
 	}
 }
