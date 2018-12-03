@@ -1,5 +1,23 @@
 # wrld
 
+## wrldTime
+
+Object para emit e escutar eventos
+
+### emit
+
+```javascript
+wrldTime.emit(this.eventTrocarDia);
+```
+
+### on
+
+```javascript
+wrldTime.on('trocar-dia', function (e) {
+  self.pagarFuncionarios();
+}, false);
+```
+
 ## Pessoa
 
 ### `criarEmpresa(nome: String)`
