@@ -10,7 +10,7 @@ class Empresa {
 
 		let self = this;
 
-		wrldTime.addEventListener('trocar-dia', function (e) {
+		wrldTime.on('trocar-dia', function (e) {
 			self.pagarFuncionarios();
 		}, false);
 	}

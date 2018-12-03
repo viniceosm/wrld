@@ -33,6 +33,6 @@ class Tempo {
 		this._datetime.setDate(this._datetime.getDate() + 1);
 		setStorage('tempo-datetime', this._datetime);
 
-		wrldTime.dispatchEvent(this.eventTrocarDia);
+		wrldTime.emit(this.eventTrocarDia);
 	}
 }
