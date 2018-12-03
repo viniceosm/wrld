@@ -7,6 +7,12 @@ class Empresa {
 			vagas: [],
 			funcionarios: []
 		});
+
+		let self = this;
+
+		wrldTime.addEventListener('trocar-dia', function (e) {
+			self.pagarFuncionarios();
+		}, false);
 	}
 
 	get nome() {
@@ -84,5 +90,11 @@ class Empresa {
 		}
 
 		fnCallback(false);
+	}
+
+	pagarFuncionarios () {
+		this.funcionarios.forEach(funcionario => {
+			funcionario.pessoa._moeda += funcionario.funcao.salario;
+		});
 	}
 }

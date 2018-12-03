@@ -3,6 +3,10 @@ let comidas = [];
 let empresas = [];
 
 (() => {
+	wrld.setDuracaoDia(10 * 1000); // 10 segundos
+})();
+
+(() => {
 	let luiz = criaObjetoPushArray(new Pessoa('Luiz'), pessoas);
 	let pao = criaObjetoPushArray(new Comida('Pao'), comidas);
 
