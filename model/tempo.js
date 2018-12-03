@@ -34,5 +34,42 @@ class Tempo {
 		setStorage('tempo-datetime', this._datetime);
 
 		wrldTime.emit(this.eventTrocarDia);
+
+		if (this._datetime.getDate() == 5) {
+			wrldTime.emit(new Event('pagamento-dia'));
+		}
+	}
+
+	getUltimoDia() {
+		let d = new Date(this._datetime.getTime());
+
+		d.setMonth(d.getMonth() + 1);
+		d.setDate(-1);
+
+		return d.getDate();
+	}
+
+	diffDatas(data1, data2) {
+		let dia1 = data1.getTime();
+		let dia2 = data2.getTime();
+
+		let diaMaior = Math.max(dia1, dia2);
+		let diaMenor = Math.min(dia1, dia2);
+
+		let diffMs = diaMaior - diaMenor;
+
+		return diffMs;
+	}
+
+	diasFaltaPagamento() {
+		let diaPagamento = 5;
+
+		let somaMesDia1 = (this._datetime.getDate() > diaPagamento) ? 1 : 0;
+		let data1 = new Date(this._datetime.getFullYear(), this._datetime.getMonth() + somaMesDia1, diaPagamento);
+		let data2 = this._datetime;
+
+		let faltaMs = this.diffDatas(data1, data2);
+
+		return Math.ceil(faltaMs / (1000 * 60 * 60 * 24));
 	}
 }

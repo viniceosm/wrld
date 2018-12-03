@@ -10,7 +10,7 @@ class Empresa {
 
 		let self = this;
 
-		wrldTime.on('trocar-dia', function (e) {
+		wrldTime.on('pagamento-dia', function (e) {
 			self.pagarFuncionarios();
 		}, false);
 	}
@@ -85,9 +85,8 @@ class Empresa {
 				fnCallback(true, funcao);
 				return;
 			}
-		} else {
-			console.warn('Sistema: Não existe vaga com essa descrição');
 		}
+		console.warn(`Sistema: ${pessoa._nome}, não existe vaga com essa descrição`);
 
 		fnCallback(false);
 	}

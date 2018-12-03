@@ -3,7 +3,7 @@ let comidas = [];
 let empresas = [];
 
 (() => {
-	wrld.setDuracaoDia(10 * 1000); // 10 segundos
+	wrld.setDuracaoDia(1 * 1000); // 1 segundo
 })();
 
 (() => {
@@ -24,7 +24,7 @@ let empresas = [];
 	// Cria empresa com vaga para funcionários
 	let nuBank = david.criarEmpresa('Nubank');
 
-	nuBank.criarVaga('Programador', 20000, 1);
+	nuBank.criarVaga('Programador', 2000, 1);
 })();
 
 (() => {
@@ -43,6 +43,13 @@ let empresas = [];
 	vini.candidatarAVaga(nuBank, 'Programador');
 })();
 
+(() => {
+	let chris = criaObjetoPushArray(new Pessoa('Christopher', 0), pessoas);
+
+	let nuBank = procuraEmpresaPorNome('Nubank');
+
+	chris.candidatarAVaga(nuBank, 'Programador');
+})();
 
 
 function criaObjetoPushArray(objeto, array) {
