@@ -3,7 +3,8 @@ class Pessoa {
 		Object.assign(this, {
 			_nome,
 			_moeda,
-			_produto: []
+			_produto: [],
+			_emprego: {}
 		});
 	}
 
@@ -28,6 +29,16 @@ class Pessoa {
 		empresa.venderMercadoria(self, nomeMercadoria, function (valido, mercadoria) {
 			if (valido === true) {
 
+			}
+		});
+	}
+
+	candidatarAVaga(empresa, descricao) {
+		let self = this;
+
+		empresa.contratar(this, descricao, function (valido, vaga) {
+			if (valido === true) {
+				self._emprego = vaga;
 			}
 		});
 	}

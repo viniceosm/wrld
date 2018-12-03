@@ -61,4 +61,28 @@ class Empresa {
 			console.warn('Sistema: Já existe uma vaga com essa descrição');
 		}
 	}
+
+	contratar(pessoa, descricao, fnCallback) {
+		let indexVagas = this.vagas.findIndex(vaga => vaga.descricao === descricao);
+
+		if (indexVagas != -1) {
+			let vagaEncontrada = this.vagas[indexVagas];
+
+			if (vagaEncontrada.quantidade > 0) {
+				vagaEncontrada.quantidade--;
+
+				let { descricao, salario } = vagaEncontrada;
+				let funcao = { descricao, salario };
+
+				this.funcionarios.push({ pessoa, funcao });
+
+				fnCallback(true, funcao);
+				return;
+			}
+		} else {
+			console.warn('Sistema: Não existe vaga com essa descrição');
+		}
+
+		fnCallback(false);
+	}
 }
