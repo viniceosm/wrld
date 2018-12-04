@@ -21,23 +21,24 @@ let empresas = [];
 (() => {
 	let david = criaObjetoPushArray(new Pessoa('David'), pessoas);
 
-	// Cria empresa com vaga para funcion·rios
+	// Cria empresa com vaga para funcion√°rios
 	let nuBank = david.criarEmpresa('Nubank');
 
 	nuBank.criarVaga('Programador', 2000, 1);
+	nuBank.setQuantidadeVaga('Programador', 3); // muda quantidade para 3
 })();
 
 (() => {
 	let vini = criaObjetoPushArray(new Pessoa('Vini', 10), pessoas);
 
-	// Faz compra de p„o
+	// Faz compra de p√£o
 	let empresa = procuraEmpresaPorNome('Padaria do luiz');
 	let mercadoria = 'Pao';
 
 	vini.comprarDeEmpresa(empresa, mercadoria);
 	vini.comprarDeEmpresa(empresa, mercadoria);
 
-	// Candidata ‡ uma vaga de programador
+	// Candidata √† uma vaga de programador
 	let nuBank = procuraEmpresaPorNome('Nubank');
 
 	vini.candidatarAVaga(nuBank, 'Programador');

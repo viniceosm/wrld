@@ -68,6 +68,17 @@ class Empresa {
 		}
 	}
 
+	setQuantidadeVaga(descricao, quantidade) {
+		let indexVagas = this.vagas.findIndex(vaga => vaga.descricao === descricao);
+
+		if (indexVagas != -1) {
+			let vagaEncontrada = this.vagas[indexVagas];
+			vagaEncontrada.quantidade = quantidade;
+		} else {
+			console.warn('Sistema: Não existe vaga com essa descrição');
+		}
+	}
+
 	contratar(pessoa, descricao, fnCallback) {
 		let indexVagas = this.vagas.findIndex(vaga => vaga.descricao === descricao);
 
