@@ -9,8 +9,6 @@ class Tempo {
 		function localStorageIfHas() {
 			if (getStorage('tempo-datetime') == null) {
 				setStorage('tempo-datetime', new Date());
-			} else {
-				console.log(getStorage('tempo-datetime'));
 			}
 
 			return new Date(getStorage('tempo-datetime'));

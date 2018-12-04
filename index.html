@@ -19,13 +19,34 @@
 	<script src="index.js"></script>
 
 	<script src="view.js"></script>
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-	<div id="tempo-datetime"></div>
-	<div id="tempo-duracao-dia"></div>
-	<div id="tempo-duracao-mes"></div>
-	<div id="tempo-dias-falta-salario"></div>
+	<div class="b">
+		<div class="b-t">Tempo</div>
+		<div class="b-c">
+			<div id="tempo-datetime"></div>
+			<div id="tempo-duracao-dia"></div>
+			<div id="tempo-duracao-mes"></div>
+			<div id="tempo-dias-falta-salario"></div>
+		</div>
+	</div>
+
+	<div class="b">
+		<div class="b-t">Pessoa</div>
+		<div class="b-c">
+			<select name="pesssoa-selecionada" id="pesssoa-selecionada"></select>
+
+			<div class="b">
+				<div class="b-c" id="infos-pessoa-selecionada">
+					Nenhuma pessoa selecionada
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>

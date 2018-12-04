@@ -28,7 +28,7 @@ class Pessoa {
 
 		empresa.venderMercadoria(self, nomeMercadoria, function (valido, mercadoria) {
 			if (valido === true) {
-
+				console.log('Sistema: Mercadoria comprada.');
 			}
 		});
 	}
