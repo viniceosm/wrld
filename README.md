@@ -101,6 +101,12 @@ let nuBank = david.criarEmpresa('Nubank');
 nuBank.criarVaga('Programador', 20000, 1);
 ```
 
+### `setQuantidadeVaga(descricao: String, quantidade: Number)`
+
+```javascript
+nuBank.setQuantidadeVaga('Programador', 3); // muda quantidade da vaga Programador para 3
+```
+
 ### `contratar(pessoa: Pessoa, descricao: String, fnCallback: function)`
 
 Esta função é usada na função Pessoa.candidatarAVaga
