@@ -39,7 +39,9 @@ window.addEventListener('load', function () {
 					<div class="b-c" id="infos-emprego-pessoa-selecionada"></div>
 				</div>`;
 
-			for (let [key, value] of Object.entries(pessoaSelecionada._emprego)) {
+			document.getElementById('infos-emprego-pessoa-selecionada').innerHTML += `empresa: ${pessoaSelecionada._emprego.empresa.nome}<br>`;
+
+			for (let [key, value] of Object.entries(pessoaSelecionada._emprego.funcao)) {
 				document.getElementById('infos-emprego-pessoa-selecionada').innerHTML += `${key}: ${value}<br>`;
 			}
 

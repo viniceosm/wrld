@@ -36,9 +36,9 @@ class Pessoa {
 	candidatarAVaga(empresa, descricao) {
 		let self = this;
 
-		empresa.contratar(this, descricao, function (valido, vaga) {
+		empresa.contratar(this, descricao, function (valido, funcao) {
 			if (valido === true) {
-				self._emprego = vaga;
+				self._emprego = { empresa, funcao };
 			}
 		});
 	}
