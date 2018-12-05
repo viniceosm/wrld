@@ -1,5 +1,7 @@
 # wrld
 
+Você pode criar empresas, comidas e pessoas (por enquanto).
+
 ## wrldTime
 
 Object para emit e escutar eventos
