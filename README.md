@@ -7,7 +7,7 @@ Object para emit e escutar eventos
 ### emit
 
 ```javascript
-wrldTime.emit(this.eventTrocarDia);
+wrldTime.emit(new Event('trocar-dia'));
 ```
 
 ### on
