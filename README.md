@@ -18,6 +18,38 @@ wrldTime.on('trocar-dia', function (e) {
 }, false);
 ```
 
+## wrld
+
+Object com atributos
+
+### tempo
+
+Uma variável do tipo Tempo
+
+### `setDuracaoDia(duracaoMs: Number)`
+
+Altera o tempo que dura o dia
+
+```javascript
+wrld.setDuracaoDia(1 * 1000); // a cada 1 segundo se passa um dia
+```
+
+### Loop do dia
+
+Para fazer o loop do dia é preciso fazer o setInterval
+
+```javascript
+let intervalDia = setInterval(function () {
+  // faça algo
+}, wrld.tempo._duracaoDia);
+```
+
+Para parar o loop
+
+```javascript
+clearInterval(intervalDia);
+```
+
 ## Pessoa
 
 ### `criarEmpresa(nome: String)`
