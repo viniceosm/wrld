@@ -37,7 +37,7 @@ class Empresa {
 		if (pessoa._moeda >= mercadoriaEncontrada.preco) {
 			pessoa._moeda -= mercadoriaEncontrada.preco;
 
-			pessoa._produto.push({ ...mercadoriaEncontrada.produto, quantidade: 1 });
+			pessoa._produtos.push({ ...mercadoriaEncontrada.produto, quantidade: 1 });
 
 			mercadoriaEncontrada.quantidade--;
 

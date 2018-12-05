@@ -43,14 +43,14 @@ window.addEventListener('load', function () {
 				document.getElementById('infos-emprego-pessoa-selecionada').innerHTML += `${key}: ${value}<br>`;
 			}
 
-			if (pessoaSelecionada._produto.length > 0) {
+			if (pessoaSelecionada._produtos.length > 0) {
 				document.getElementById('infos-pessoa-selecionada').innerHTML += `<div class="b">
 					<div class="b-t">Produtos</div>
 					<div class="b-c" id="infos-prod-pessoa-selecionada"></div>
 				</div>`;
 
-				for (let index in pessoaSelecionada._produto) {
-					let prod = pessoaSelecionada._produto[index];
+				for (let index in pessoaSelecionada._produtos) {
+					let prod = pessoaSelecionada._produtos[index];
 
 					if (index > 0) {
 						document.getElementById('infos-prod-pessoa-selecionada').innerHTML += `<hr>`;

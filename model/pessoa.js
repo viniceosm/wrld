@@ -3,7 +3,7 @@ class Pessoa {
 		Object.assign(this, {
 			_nome,
 			_moeda,
-			_produto: [],
+			_produtos: [],
 			_emprego: {}
 		});
 	}
