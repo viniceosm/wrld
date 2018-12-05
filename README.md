@@ -7,7 +7,7 @@ Object para emit e escutar eventos
 ### emit
 
 ```javascript
-wrldTime.emit(this.eventTrocarDia);
+wrldTime.emit(new Event('trocar-dia'));
 ```
 
 ### on
@@ -16,6 +16,38 @@ wrldTime.emit(this.eventTrocarDia);
 wrldTime.on('trocar-dia', function (e) {
   self.pagarFuncionarios();
 }, false);
+```
+
+## wrld
+
+Object com atributos
+
+### tempo
+
+Uma variável do tipo Tempo
+
+### `setDuracaoDia(duracaoMs: Number)`
+
+Altera o tempo que dura o dia
+
+```javascript
+wrld.setDuracaoDia(1 * 1000); // a cada 1 segundo se passa um dia
+```
+
+### Loop do dia
+
+Para fazer o loop do dia é preciso fazer o setInterval
+
+```javascript
+let intervalDia = setInterval(function () {
+  // faça algo
+}, wrld.tempo._duracaoDia);
+```
+
+Para parar o loop
+
+```javascript
+clearInterval(intervalDia);
 ```
 
 ## Pessoa
@@ -67,6 +99,12 @@ Esta função é usada na função Pessoa.comprarDeEmpresa
 let david = criaObjetoPushArray(new Pessoa('David'), pessoas);
 let nuBank = david.criarEmpresa('Nubank');
 nuBank.criarVaga('Programador', 20000, 1);
+```
+
+### `setQuantidadeVaga(descricao: String, quantidade: Number)`
+
+```javascript
+nuBank.setQuantidadeVaga('Programador', 3); // muda quantidade da vaga Programador para 3
 ```
 
 ### `contratar(pessoa: Pessoa, descricao: String, fnCallback: function)`
