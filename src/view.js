@@ -5,13 +5,20 @@ window.addEventListener('load', function () {
 		setTempoDatetime();
 	}, wrld.tempo._duracaoDia);
 
-	document.getElementById('pesssoa-selecionada').innerHTML = '';
+	document.getElementById('ac-pesssoa-selecionada').innerHTML = '';
 	for (let index in pessoas) {
-		document.getElementById('pesssoa-selecionada').innerHTML += `<option value="${index}">${pessoas[index].nome}</option>`;
+		document.getElementById('ac-pesssoa-selecionada').innerHTML += `<div class="datalist-option" value="${index}">${pessoas[index].nome}</div>`;
 	}
+
+	autocompletev.adicionaEventosDataList('#pesssoa-selecionada');
 
 	document.getElementById('pesssoa-selecionada').addEventListener('change', function () {
 		setInfoPessoaSelecionada();
+		let indexPessoa = document.getElementById('pesssoa-selecionada').value;
+		if (indexPessoa.trim() !== '') {
+			let pessoaSelecionada = pessoas[indexPessoa];
+			document.getElementById('pesssoa-selecionada').value = pessoaSelecionada.nome;
+		}
 	});
 
 	wrldTime.on('pagamento-dia', function () {
@@ -34,15 +41,17 @@ window.addEventListener('load', function () {
 			document.getElementById('infos-pessoa-selecionada').innerHTML = `${pessoaSelecionada.nome}<br>
 				Moeda: ${pessoaSelecionada._moeda}`;
 
-			document.getElementById('infos-pessoa-selecionada').innerHTML += `<div class="b">
+			if (pessoaSelecionada._emprego.empresa != null) {
+				document.getElementById('infos-pessoa-selecionada').innerHTML += `<div class="b">
 					<div class="b-t">Emprego</div>
 					<div class="b-c" id="infos-emprego-pessoa-selecionada"></div>
 				</div>`;
 
-			document.getElementById('infos-emprego-pessoa-selecionada').innerHTML += `empresa: ${pessoaSelecionada._emprego.empresa.nome}<br>`;
+				document.getElementById('infos-emprego-pessoa-selecionada').innerHTML += `empresa: ${pessoaSelecionada._emprego.empresa.nome}<br>`;
 
-			for (let [key, value] of Object.entries(pessoaSelecionada._emprego.funcao)) {
-				document.getElementById('infos-emprego-pessoa-selecionada').innerHTML += `${key}: ${value}<br>`;
+				for (let [key, value] of Object.entries(pessoaSelecionada._emprego.funcao)) {
+					document.getElementById('infos-emprego-pessoa-selecionada').innerHTML += `${key}: ${value}<br>`;
+				}
 			}
 
 			if (pessoaSelecionada._produtos.length > 0) {

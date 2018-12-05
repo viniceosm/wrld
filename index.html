@@ -9,6 +9,7 @@
 	<script src="src/wrld-time.js"></script>
 
 	<script src="lib/local-storage.js"></script>
+	<script src="lib/autocompletev/autocompletev.js"></script>
 
 	<script src="src/model/Pessoa.js"></script>
 	<script src="src/model/Comida.js"></script>
@@ -22,6 +23,7 @@
 
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="lib/autocompletev/autocompletev.css">
 </head>
 
 <body>
@@ -38,7 +40,10 @@
 	<div class="b">
 		<div class="b-t">Pessoa</div>
 		<div class="b-c">
-			<select name="pesssoa-selecionada" id="pesssoa-selecionada"></select>
+			<input class="datalist-input" id="pesssoa-selecionada" type="text" target="#ac-pesssoa-selecionada" autocomplete="off">
+
+			<div class="datalist" id="ac-pesssoa-selecionada">
+			</div>
 
 			<div class="b">
 				<div class="b-c" id="infos-pessoa-selecionada">
