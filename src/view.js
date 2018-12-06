@@ -15,14 +15,14 @@ window.addEventListener('load', function () {
 	autocompletev.adicionaEventosDataList('#pesssoa-selecionada');
 
 	document.getElementById('pesssoa-selecionada').addEventListener('change', function () {
-		setInfoPessoaSelecionada();
-
 		indexPessoaSelecionada = document.getElementById('pesssoa-selecionada').value;
 
 		if (indexPessoaSelecionada.trim() !== '') {
 			let pessoaSelecionada = pessoas[indexPessoaSelecionada];
 			document.getElementById('pesssoa-selecionada').value = pessoaSelecionada.nome;
 		}
+
+		setInfoPessoaSelecionada();
 	});
 
 	wrldTime.on('pagamento-dia', function () {
