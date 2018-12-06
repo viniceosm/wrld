@@ -1,0 +1,3 @@
+[submodule "lib/autocompletev"]
+  path = lib/autocompletev
+  url = https://github.com/viniceosm/autocompletev.git
