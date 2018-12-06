@@ -1,5 +1,6 @@
 window.addEventListener('load', function () {
 	let indexPessoaSelecionada = '';
+	let indexEmpresaSelecionada = '';
 
 	setTempoDatetime();
 
@@ -14,6 +15,13 @@ window.addEventListener('load', function () {
 
 	autocompletev.adicionaEventosDataList('#pesssoa-selecionada');
 
+	document.getElementById('ac-empresa-selecionada').innerHTML = '';
+	for (let index in empresas) {
+		document.getElementById('ac-empresa-selecionada').innerHTML += `<div class="datalist-option" value="${index}">${empresas[index].nome}</div>`;
+	}
+
+	autocompletev.adicionaEventosDataList('#empresa-selecionada');
+
 	document.getElementById('pesssoa-selecionada').addEventListener('change', function () {
 		indexPessoaSelecionada = document.getElementById('pesssoa-selecionada').value;
 
@@ -23,6 +31,17 @@ window.addEventListener('load', function () {
 		}
 
 		setInfoPessoaSelecionada();
+	});
+
+	document.getElementById('empresa-selecionada').addEventListener('change', function () {
+		indexEmpresaSelecionada = document.getElementById('empresa-selecionada').value;
+
+		if (indexEmpresaSelecionada.trim() !== '') {
+			let empresaSelecionada = pessoas[indexEmpresaSelecionada];
+			document.getElementById('empresa-selecionada').value = empresaSelecionada.nome;
+		}
+
+		setInfoEmpresaSelecionada();
 	});
 
 	wrldTime.on('pagamento-dia', function () {
@@ -45,38 +64,53 @@ window.addEventListener('load', function () {
 			document.getElementById('infos-pessoa-selecionada').innerHTML = `${pessoaSelecionada.nome}<br>
 				Moeda: ${pessoaSelecionada._moeda}`;
 
-			if (pessoaSelecionada._emprego.empresa != null) {
-				document.getElementById('infos-pessoa-selecionada').innerHTML += `<div class="b">
-					<div class="b-t">Emprego</div>
-					<div class="b-c" id="infos-emprego-pessoa-selecionada"></div>
-				</div>`;
+			addEmpresaPessoa();
+			addProdutosPessoa();
 
-				document.getElementById('infos-emprego-pessoa-selecionada').innerHTML += `empresa: ${pessoaSelecionada._emprego.empresa.nome}<br>`;
+			function addProdutosPessoa() {
+				if (pessoaSelecionada._produtos.length > 0) {
+					document.getElementById('infos-pessoa-selecionada').innerHTML += `<div class="b">
+						<div class="b-t">Produtos</div>
+						<div class="b-c" id="infos-prod-pessoa-selecionada"></div>
+					</div>`;
 
-				for (let [key, value] of Object.entries(pessoaSelecionada._emprego.funcao)) {
-					document.getElementById('infos-emprego-pessoa-selecionada').innerHTML += `${key}: ${value}<br>`;
-				}
-			}
+					for (let index in pessoaSelecionada._produtos) {
+						let prod = pessoaSelecionada._produtos[index];
 
-			if (pessoaSelecionada._produtos.length > 0) {
-				document.getElementById('infos-pessoa-selecionada').innerHTML += `<div class="b">
-					<div class="b-t">Produtos</div>
-					<div class="b-c" id="infos-prod-pessoa-selecionada"></div>
-				</div>`;
+						if (index > 0) {
+							document.getElementById('infos-prod-pessoa-selecionada').innerHTML += `<hr>`;
+						}
 
-				for (let index in pessoaSelecionada._produtos) {
-					let prod = pessoaSelecionada._produtos[index];
-
-					if (index > 0) {
-						document.getElementById('infos-prod-pessoa-selecionada').innerHTML += `<hr>`;
-					}
-
-					for (let [key, value] of Object.entries(prod)) {
-						document.getElementById('infos-prod-pessoa-selecionada').innerHTML += `${key}: ${value}<br>`;
+						for (let [key, value] of Object.entries(prod)) {
+							document.getElementById('infos-prod-pessoa-selecionada').innerHTML += `${key}: ${value}<br>`;
+						}
 					}
 				}
 			}
 
+			function addEmpresaPessoa() {
+				if (pessoaSelecionada._emprego.empresa != null) {
+					document.getElementById('infos-pessoa-selecionada').innerHTML += `<div class="b">
+							<div class="b-t">Emprego</div>
+							<div class="b-c" id="infos-emprego-pessoa-selecionada"></div>
+						</div>`;
+
+					document.getElementById('infos-emprego-pessoa-selecionada').innerHTML += `empresa: ${pessoaSelecionada._emprego.empresa.nome}<br>`;
+
+					for (let [key, value] of Object.entries(pessoaSelecionada._emprego.funcao)) {
+						document.getElementById('infos-emprego-pessoa-selecionada').innerHTML += `${key}: ${value}<br>`;
+					}
+				}
+			}
+		}
+	}
+
+	function setInfoEmpresaSelecionada() {
+		if (indexEmpresaSelecionada.trim() !== '') {
+			let empresaSelecionada = empresas[indexEmpresaSelecionada];
+
+			document.getElementById('infos-empresa-selecionada').innerHTML = `${empresaSelecionada.nome}<br>
+				Moeda: ${empresaSelecionada._moeda}`;
 		}
 	}
 });
