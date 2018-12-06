@@ -1,4 +1,6 @@
 window.addEventListener('load', function () {
+	let indexPessoaSelecionada = '';
+
 	setTempoDatetime();
 
 	setInterval(function () {
@@ -14,9 +16,11 @@ window.addEventListener('load', function () {
 
 	document.getElementById('pesssoa-selecionada').addEventListener('change', function () {
 		setInfoPessoaSelecionada();
-		let indexPessoa = document.getElementById('pesssoa-selecionada').value;
-		if (indexPessoa.trim() !== '') {
-			let pessoaSelecionada = pessoas[indexPessoa];
+
+		indexPessoaSelecionada = document.getElementById('pesssoa-selecionada').value;
+
+		if (indexPessoaSelecionada.trim() !== '') {
+			let pessoaSelecionada = pessoas[indexPessoaSelecionada];
 			document.getElementById('pesssoa-selecionada').value = pessoaSelecionada.nome;
 		}
 	});
@@ -34,7 +38,7 @@ window.addEventListener('load', function () {
 	}
 
 	function setInfoPessoaSelecionada() {
-		let indexPessoa = document.getElementById('pesssoa-selecionada').value;
+		let indexPessoa = indexPessoaSelecionada;
 		if (indexPessoa.trim() !== '') {
 			let pessoaSelecionada = pessoas[indexPessoa];
 
