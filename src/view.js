@@ -8,19 +8,7 @@ window.addEventListener('load', function () {
 		setTempoDatetime();
 	}, wrld.tempo._duracaoDia);
 
-	document.getElementById('ac-pesssoa-selecionada').innerHTML = '';
-	for (let index in pessoas) {
-		document.getElementById('ac-pesssoa-selecionada').innerHTML += `<div class="datalist-option" value="${index}">${pessoas[index].nome}</div>`;
-	}
-
-	autocompletev.adicionaEventosDataList('#pesssoa-selecionada');
-
-	document.getElementById('ac-empresa-selecionada').innerHTML = '';
-	for (let index in empresas) {
-		document.getElementById('ac-empresa-selecionada').innerHTML += `<div class="datalist-option" value="${index}">${empresas[index].nome}</div>`;
-	}
-
-	autocompletev.adicionaEventosDataList('#empresa-selecionada');
+	inicializaAutocompletev();
 
 	document.getElementById('pesssoa-selecionada').addEventListener('change', function () {
 		indexPessoaSelecionada = document.getElementById('pesssoa-selecionada').value;
@@ -74,17 +62,7 @@ window.addEventListener('load', function () {
 						<div class="b-c" id="infos-prod-pessoa-selecionada"></div>
 					</div>`;
 
-					for (let index in pessoaSelecionada._produtos) {
-						let prod = pessoaSelecionada._produtos[index];
-
-						if (index > 0) {
-							document.getElementById('infos-prod-pessoa-selecionada').innerHTML += `<hr>`;
-						}
-
-						for (let [key, value] of Object.entries(prod)) {
-							document.getElementById('infos-prod-pessoa-selecionada').innerHTML += `${key}: ${value}<br>`;
-						}
-					}
+					appendKeyValueOfObjectIn(pessoaSelecionada._produtos, 'infos-prod-pessoa-selecionada');
 				}
 			}
 
@@ -111,6 +89,42 @@ window.addEventListener('load', function () {
 
 			document.getElementById('infos-empresa-selecionada').innerHTML = `${empresaSelecionada.nome}<br>
 				Moeda: ${empresaSelecionada._moeda}`;
+		}
+	}
+
+	function appendKeyValueOfObjectIn(objects, idElement) {
+		for (let index in objects) {
+			let object = objects[index];
+
+			if (index > 0) {
+				document.getElementById(idElement).innerHTML += `<hr>`;
+			}
+
+			for (let [key, value] of Object.entries(object)) {
+				document.getElementById(idElement).innerHTML += `${key}: ${value}<br>`;
+			}
+		}
+	}
+
+	function inicializaAutocompletev() {
+		individual('pesssoa-selecionada', function (elAc) {
+			for (let index in pessoas) {
+				elAc.innerHTML += `<div class="datalist-option" value="${index}">${pessoas[index].nome}</div>`;
+			}
+		});
+
+		individual('empresa-selecionada', function (elAc) {
+			for (let index in empresas) {
+				elAc.innerHTML += `<div class="datalist-option" value="${index}">${empresas[index].nome}</div>`;
+			}
+		});
+
+		function individual(idInput, fnCallback) {
+			document.getElementById('ac-' + idInput).innerHTML = '';
+
+			fnCallback(document.getElementById('ac-' + idInput));
+
+			autocompletev.adicionaEventosDataList('#' + idInput);
 		}
 	}
 });
