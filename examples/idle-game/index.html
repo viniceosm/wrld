@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Wrld</title>
+
+	<script src="../../src/wrld-time.js"></script>
+
+	<script src="../../lib/local-storage.js"></script>
+	<script src="../../lib/autocompletev/autocompletev.js"></script>
+
+	<script src="../../src/model/Pessoa.js"></script>
+	<script src="../../src/model/Comida.js"></script>
+	<script src="../../src/model/Empresa.js"></script>
+	<script src="../../src/model/Tempo.js"></script>
+
+	<script src="../../src/wrld.js"></script>
+	<!-- <script src="js/index.js"></script> -->
+
+	<script src="js/view.js"></script>
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+	<!-- <link rel="stylesheet" href="../../lib/autocompletev/autocompletev.css"> -->
+</head>
+
+<body>
+	<div class="b col-m-5">
+		<div class="b-t">Tempo</div>
+		<div class="b-c">
+			<div id="tempo-datetime"></div>
+			<div id="tempo-duracao-dia"></div>
+			<div id="tempo-duracao-mes"></div>
+			<div id="tempo-dias-falta-salario"></div>
+		</div>
+	</div>
+
+	<div class="b col-m-5">
+		<div class="b-t">Pessoa</div>
+		<div class="b-c" id="infos-pessoa-selecionada">
+		</div>
+	</div>
+
+	<div class="b col-m-5">
+		<div class="b-t">Ações</div>
+		<div class="b-c">
+			<label for="acelera-tempo">Digite qualquer coisa para acelerar o tempo</label><br>
+			<input type="text" name="acelera-tempo" id="acelera-tempo">
+		</div>
+	</div>
+</body>
+
+</html>

@@ -22,6 +22,9 @@ class Tempo {
 	set duracaoDia(duracaoDiaMs) {
 		this._duracaoDia = duracaoDiaMs;
 
+		clearInterval(this.intervalDia);
+		this.trocarDia();
+
 		this.intervalDia = setInterval(() => {
 			this.trocarDia();
 		}, this._duracaoDia);

@@ -1,0 +1,14 @@
+* {
+	box-sizing: border-box;
+}
+.b {
+	border: 1px solid black;
+	margin: 10px 5px;
+}
+.b > div:not(.b-t) {
+	margin: 2px;
+}
+.b-t {
+	margin: 0px;
+	background: #d3d3d3;
+}
