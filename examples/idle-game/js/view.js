@@ -14,7 +14,8 @@ wrld.setDuracaoDia(1 * 1000); // 1 segundo
 })();
 
 (() => {
-	let vini = criaObjetoPushArray(new Pessoa('Vini', 10), pessoas);
+	let moedaVini = parseInt(getStorage('moeda-vini')) || 10;
+	let vini = criaObjetoPushArray(new Pessoa('Vini', moedaVini), pessoas);
 
 	// Candidata à uma vaga de programador
 	let nuBank = procuraEmpresaPorNome('Nubank');
@@ -36,6 +37,7 @@ window.addEventListener('load', function () {
 
 	wrldTime.on('pagamento-dia', function () {
 		setInfoPessoaSelecionada();
+		setStorage('moeda-vini', pessoaSelecionada._moeda);
 	});
 
 	for (let el of [[document.getElementById('acelera-tempo'), 'keyup'], [document.getElementById('btn-acelera-tempo'), 'click']]) {
@@ -46,7 +48,6 @@ window.addEventListener('load', function () {
 			}, 2 * 1000);
 		});
 	}
-
 
 	function setTempoDatetime() {
 		document.querySelector('#tempo-datetime').innerHTML = wrld.tempo.datetimeString;
