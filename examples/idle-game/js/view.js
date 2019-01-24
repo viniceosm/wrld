@@ -10,7 +10,7 @@ wrld.setDuracaoDia(1 * 1000); // 1 segundo
 	// Cria empresa com vaga para funcionários
 	let nuBank = david.criarEmpresa('Nubank');
 
-	nuBank.criarVaga('Programador', 2000, 1);
+	nuBank.criarVaga('Programador', 30, 1);
 })();
 
 (() => {
