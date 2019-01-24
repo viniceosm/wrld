@@ -38,12 +38,15 @@ window.addEventListener('load', function () {
 		setInfoPessoaSelecionada();
 	});
 
-	document.getElementById('acelera-tempo').addEventListener('keyup', function (e) {
-		wrld.setDuracaoDia(0.5 * 1000); // 0.5 segundo
-		setTimeout(function () {
-			wrld.setDuracaoDia(1 * 1000); // 1 segundo
-		}, 2 * 1000);
-	});
+	for (let el of [[document.getElementById('acelera-tempo'), 'keyup'], [document.getElementById('btn-acelera-tempo'), 'click']]) {
+		el[0].addEventListener(el[1], function (e) {
+			wrld.setDuracaoDia(0.5 * 1000); // 0.5 segundo
+			setTimeout(function () {
+				wrld.setDuracaoDia(1 * 1000); // 1 segundo
+			}, 2 * 1000);
+		});
+	}
+
 
 	function setTempoDatetime() {
 		document.querySelector('#tempo-datetime').innerHTML = wrld.tempo.datetimeString;

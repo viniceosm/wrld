@@ -4,7 +4,8 @@ class Pessoa {
 			_nome,
 			_moeda,
 			_produtos: [],
-			_emprego: {}
+			_emprego: {},
+			_fome: 0
 		});
 	}
 
